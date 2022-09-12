@@ -11,7 +11,9 @@ import com.cts.ecart.service.ProductService;
 public class Application {
 
 	public static void main(String[] args) {
+		
 		ApplicationContext ac= SpringApplication.run(Application.class, args);
+		
 		ProductService ps = ac.getBean(ProductService.class);
 		
 		Product p1=new Product(13, "Laptop", 17500, "Intel I3");
