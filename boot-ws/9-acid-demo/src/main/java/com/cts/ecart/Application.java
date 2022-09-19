@@ -40,7 +40,11 @@ public class Application {
 		//prodDao.findByProductTitleLike("%plus%").forEach(System.out::println);
 		
 		// list all products whose brand name is samsung
-		prodDao.findByBrand_BrandTitleEquals("Samsung").forEach(System.out::println);
+		//prodDao.findByBrand_BrandTitleEquals("Samsung").forEach(System.out::println);
+		
+		// list all products whose category name is 'Mobiles'
+		
+		prodDao.findByCategory_CatTitle("Home Appliances").forEach(System.out::println);
 		
 		
 		

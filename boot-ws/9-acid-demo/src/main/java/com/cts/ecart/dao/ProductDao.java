@@ -17,8 +17,14 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
 	List<Product> findByProductTitleLike(String name);
 	
 	// list all products whose brand name is samsung
-	
 	List<Product> findByBrand_BrandTitleEquals(String brandName);
+	
+	// list all  products of mobile category
+	List<Product> findByCategory_CatTitle(String catgoryName);
+	
+	
+	
+	
 	
 	
 
