@@ -8,7 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+
 @Entity(name = "products")
+
 public class Product {
 
 	@Id
@@ -21,10 +23,12 @@ public class Product {
 	private String productImage;
 	private String productKeywords;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "productCat")
 	private Category category;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "productBrand")
 	private Brand brand;
 
@@ -104,7 +108,18 @@ public class Product {
 	public String toString() {
 		return "Product [productId=" + productId + ", productTitle=" + productTitle + ", productQty=" + productQty
 				+ ", productPrice=" + productPrice + ", productDesc=" + productDesc + ", productImage=" + productImage
+				+ ", productKeywords=" + productKeywords + "]";
+	}
+	
+	
+
+	/*
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productTitle=" + productTitle + ", productQty=" + productQty
+				+ ", productPrice=" + productPrice + ", productDesc=" + productDesc + ", productImage=" + productImage
 				+ ", productKeywords=" + productKeywords + ", category=" + category + ", brand=" + brand + "]";
 	}
 
+   */
 }

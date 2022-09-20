@@ -3,6 +3,8 @@ package com.cts.ecart;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cts.ecart.dao.BrandDao;
 import com.cts.ecart.dao.CategoryDao;
@@ -13,6 +15,7 @@ import com.cts.ecart.entity.Category;
 public class Application {
 
 	public static void main(String[] args) {
+		
 		ApplicationContext ac= SpringApplication.run(Application.class, args);
 		ProductDao prodDao = ac.getBean(ProductDao.class);
 		BrandDao brandDao = ac.getBean(BrandDao.class);
@@ -44,7 +47,45 @@ public class Application {
 		
 		// list all products whose category name is 'Mobiles'
 		
-		prodDao.findByCategory_CatTitle("Home Appliances").forEach(System.out::println);
+		//prodDao.findByCategory_CatTitle("Home Appliances").forEach(System.out::println);
+		
+		
+		//prodDao.listAll().forEach(System.out::println);
+		
+		//prodDao.findByName("%a%").forEach(prod->{
+		//	System.out.println(prod.getCategory());
+		//});
+		
+		/*prodDao.findAll().forEach(prod->{
+			System.out.println(prod);
+			System.out.println(prod.getCategory());
+			System.out.println(prod.getBrand());
+		});
+		*/
+		
+		BrandDao bd = ac.getBean(BrandDao.class);
+		//bd.saveBrand(6, "New");
+		
+		
+		
+		bd.findAll().forEach(System.out::println);
+		
+		//bd.listAllBrands().forEach(System.out::println);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
