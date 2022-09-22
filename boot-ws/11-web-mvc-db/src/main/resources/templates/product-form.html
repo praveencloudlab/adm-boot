@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+</head>
+<body class="container">
+
+	<div th:insert="/header::header"></div>
+
+	<div class="">
+
+		<div class="col-4">
+			<form action="./saveProduct" method="post">
+				
+				<div class="form-group">
+					<label>Product Name</label>
+					 <input name="productTitle" class="form-control" />
+				</div> 
+				<div class="form-group">
+					<label>Quantity</label>
+					 <input name="productQty" class="form-control" />
+				</div> 
+				<div>
+				<label>Select Category</label>
+				<select class="form-control" id="catId" name="catId">
+    				<option value="0">select option</option>
+   					 <option th:each="category : ${categories}" th:value="${category.catId}" th:text="${category.catTitle}"></option>
+					</select>
+				</div>
+				
+				<div>
+				<label>Select Brand</label>
+				<select class="form-control" id="brandId" name="brandId">
+    				<option value="0">select option</option>
+   					 <option th:each="brand : ${brands}" th:value="${brand.brandId}" th:text="${brand.brandTitle}"></option>
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<label>Product Price</label>
+					 <input name="productPrice" class="form-control" />
+				</div> 
+				<div class="form-group">
+					<label>Select Image</label>
+					 <input type="file" name="productImage" class="form-control" />
+				</div> 
+				<div class="form-group">
+					<label>Product Description</label>
+					 <textarea name="productDesc" class="form-control"></textarea>
+				</div> 
+				<div class="form-group">
+					<label>Product Keywords</label>
+					 <textarea name="productKeywords" class="form-control"></textarea>
+				</div> 
+				
+				<div class="text-center mt-2">
+				<button class="btn btn-primary">Save</button>
+				<button  type="reset" class="btn btn-warning">Reset All</button>
+				<button  type="button" class="btn btn-danger">Cancel</button>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+
+
+</body>
+</html>
