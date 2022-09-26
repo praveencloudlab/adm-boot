@@ -11,7 +11,7 @@ public class Fare {
 	@GeneratedValue
 	private int fareId;
 	private String currency;
-	private double fare;
+	private double ticketFare;
 
 	public int getFareId() {
 		return fareId;
@@ -29,12 +29,17 @@ public class Fare {
 		this.currency = currency;
 	}
 
-	public double getFare() {
-		return fare;
+	public double getTicketFare() {
+		return ticketFare;
 	}
 
-	public void setFare(double fare) {
-		this.fare = fare;
+	public void setTicketFare(double ticketFare) {
+		this.ticketFare = ticketFare;
+	}
+
+	@Override
+	public String toString() {
+		return "Fare [fareId=" + fareId + ", currency=" + currency + ", fare=" + ticketFare + "]";
 	}
 
 }

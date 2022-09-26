@@ -150,6 +150,15 @@ public class BookingRecord {
 	public void setTravellers(int travellers) {
 		this.travellers = travellers;
 	}
+
+
+	@Override
+	public String toString() {
+		return "BookingRecord [bookingId=" + bookingId + ", origin=" + origin + ", destination=" + destination
+				+ ", bookingDate=" + bookingDate + ", fare=" + fare + ", flightDate=" + flightDate + ", flightTime="
+				+ flightTime + ", status=" + status + ", flightNumber=" + flightNumber + ", travellers=" + travellers
+				+ ", flightInfo=" + flightInfo + ", passenger=" + passenger + "]";
+	}
 	
 	
 

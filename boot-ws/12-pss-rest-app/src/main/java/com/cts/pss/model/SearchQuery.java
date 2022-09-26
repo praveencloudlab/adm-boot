@@ -11,11 +11,22 @@ public class SearchQuery {
 	private String origin;
 	private String destination;
 	private String flightNumber;
+	private int flightId;
 	private LocalDate flightDate;
 	private int travellers;
 	private Passenger passenger;
 	private int bookingId;
 	private List<CoPassenger> coPassengers;
+	
+	
+
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
+	}
 
 	public int getBookingId() {
 		return bookingId;

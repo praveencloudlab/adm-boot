@@ -27,16 +27,17 @@ public class BookingServiceImpl implements BookingService {
 	private FlightService flightService;
 
 	@Override
-	public BookingRecord bookFlight(SearchQuery query) {
+	public Object bookFlight(SearchQuery query) {
 
 		BookingRecord bookingRecord = null;
 
-		Flight flight = flightService.findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(
-				query.getFlightNumber(), query.getOrigin(), query.getDestination(), query.getFlightDate());
+		Flight flight =flightService.findFlightById(query.getFlightId());
+				// flightService.findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(
+				//query.getFlightNumber(), query.getOrigin(), query.getDestination(), query.getFlightDate());
 
 		if (flight.getInventory().getAvailableSeats() < query.getTravellers()) {
-			System.out.println(">>>>>> No more Seats Avaiable for Book <<<<<<");
-			return null;
+			System.out.println(">>>>>> No more Seats Avaiable for Book <<<<<<" +flight.getInventory().getAvailableSeats());
+			return "No more Seats Avaiable for booking";
 		}
 
 		if (flight != null) {
@@ -44,15 +45,18 @@ public class BookingServiceImpl implements BookingService {
 					flight.getFlightNumber(), flight.getOrigin(), flight.getDestination(), "CONFIRMED",
 					query.getTravellers(), query.getPassenger(), flight.getFlightInfo());
 
-			bookingRecord.setFare(flight.getFare().getFare() * query.getTravellers());
+			bookingRecord.setFare(flight.getFare().getTicketFare() * query.getTravellers());
 
 			if (query.getPassenger().getCoPassengers().size() == query.getTravellers() - 1) {
 				// Update Inventory
 				flight.getInventory().setAvailableSeats(flight.getInventory().getAvailableSeats() - query.getTravellers());
 				flightService.scheduleFlight(flight);
 				bookingDao.save(bookingRecord);
+				System.out.println("Flight booked successfully...");
+				System.out.println(bookingRecord);
 			} else {
 				System.out.println(">>>>> Passenger count Wrongly Provided. Booking not Done...");
+				return "Passenger count Wrongly Provided. Booking not Done";
 			}
 
 		}
@@ -135,7 +139,7 @@ public class BookingServiceImpl implements BookingService {
 		bookingRecord.setFlightDate(newFlight.getFlightDate());
 		bookingRecord.setFlightTime(newFlight.getFlightTime());
 		bookingRecord.setFlightInfo(newFlight.getFlightInfo());
-		bookingRecord.setFare(newFlight.getFare().getFare());
+		bookingRecord.setFare(newFlight.getFare().getTicketFare());
 
 		bookingDao.save(bookingRecord);
 		// Update Inventory for newly selected flight

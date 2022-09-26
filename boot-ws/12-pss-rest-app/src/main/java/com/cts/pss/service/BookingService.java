@@ -9,7 +9,7 @@ import com.cts.pss.model.SearchQuery;
 
 public interface BookingService {
 	
-	BookingRecord bookFlight(SearchQuery query);
+	Object bookFlight(SearchQuery query);
 	BookingRecord getBookingData(int id);
 	public BookingRecord rescheduleBooking(int bookingId, int flightId);
 	public BookingRecord customCancelBooking(int bookingId,List<CoPassenger> coPassengers);

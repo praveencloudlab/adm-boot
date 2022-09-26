@@ -86,4 +86,14 @@ public class Passenger {
 		this.gender = gender;
 	}
 
+	@Override
+	public String toString() {
+		return "Passenger [passengerId=" + passengerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", emailAddress=" + emailAddress + ", mobileNumber=" + mobileNumber + ", gender=" + gender
+				+ ", coPassengers=" + coPassengers + "]";
+	}
+	
+	
+	
+
 }
